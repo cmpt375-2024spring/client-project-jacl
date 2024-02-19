@@ -16,6 +16,4 @@ This web application was build for the CMPT 375 (Web Applications) class of spri
 - Lily (Creative Director, Photo and Video editor, front-end designer, branding and social media)
 - Gabriel (Graphic design, Photo and Video editor, and Development Reacher)
 
-(Fill in the names and roles of developers and designers above)
-
 
