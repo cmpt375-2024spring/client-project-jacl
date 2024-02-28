@@ -1,4 +1,41 @@
 {% load static %}
-<navbar>
-    
-</navbar>
+<nav class="navbar navbar-expand-lg navbar-light bg-light py-3 font-weight-lighter">
+    <a class="navbar-brand p-5 bg-secondary" href="/"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            {% for title, subpages in pages.items %}
+                <li class="
+                    nav-item
+                    {% if subpages|length != 0 %} dropdown {% endif %}
+                    {% if active == title %} active {% endif %} 
+                    mx-5
+                ">
+                    <a class="
+                            nav-link
+                            {% if subpages|length != 0 %} dropdown-toggle {% endif %}
+                        " 
+                        {% if subpages|length != 0 %}
+                            id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+                        {% else %}
+                            href="{{title|lower}}"
+                        {% endif %}
+                    >
+                        {{title}} 
+                        {% if active == title %} <span class="sr-only">(current)</span> {% endif %}
+                    </a>
+                    {% if subpages|length != 0 %}
+                        <div class="dropdown-menu p-2">
+                            {% for subpage, link in subpages.items %}
+                                <a class="dropdown-item p-2" href="{{link}}">{{subpage}}</a>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <a href=""><button class="btn btn-secondary btn-md px-4">Donate</button></a>
+</nav>
