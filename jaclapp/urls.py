@@ -17,6 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
+admin.site.site_header = "JACL Administration"
+admin.site.site_title = "JACL Admin"
+
 urlpatterns = [
     path('', include('app.urls')),
     path('admin/', admin.site.urls),
