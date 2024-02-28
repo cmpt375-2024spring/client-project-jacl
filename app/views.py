@@ -27,4 +27,5 @@ context = { 'pages' : pages }
 
 def index(request):
     context['active'] = ''
-    return render(request, 'index.html', context)
+    return render(request, 'app/index.html', context)
+
