@@ -1,10 +1,16 @@
 {% load static %}
-<nav class="navbar navbar-expand-lg navbar-light bg-light py-3 font-weight-lighter">
-    <a class="navbar-brand p-5 bg-secondary" href="/"></a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light py-3 font-family-ysabeau-sc">
+    <a class="navbar-brand d-flex flex-row" href="/">
+        <img src="{% static "images/logo/national_logo.svg" %}" style="mix-blend-mode:multiply;" width="75">
+        <span class="d-flex flex-column ml-2 font-family-julius-sans">
+            <h1 class="display-5">JACL</h1>
+            <h5>SALT LAKE CITY CHAPTER</h5>
+        </span>
+    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
         <ul class="navbar-nav">
             {% for title, subpages in pages.items %}
                 <li class="
@@ -23,7 +29,7 @@
                             href="{{title|lower}}"
                         {% endif %}
                     >
-                        {{title}} 
+                        {{title|upper}} 
                         {% if active == title %} <span class="sr-only">(current)</span> {% endif %}
                     </a>
                     {% if subpages|length != 0 %}
@@ -37,5 +43,4 @@
             {% endfor %}
         </ul>
     </div>
-    <a href=""><button class="btn btn-secondary btn-md px-4">Donate</button></a>
 </nav>
