@@ -5,22 +5,17 @@ pages = {
     'About Us': {
         'Mission & Vision': 'mission',
         'Board Members': 'board',
-        'Activism': 'activism',
-        'Cultural Programming': 'cultural_programming',
+        'History': 'history',
     },
+    'Events': '',
     'Get Involved': {
         'Join SLC JACL': 'join',
         'Volunteer': 'volunteer',
-        'Events': 'events',
     },
     'Resources': {
         'JACL Scholarships': 'scholarships',
-        'Japanese Cultural Organizations': 'orgs/japanese',
-        'Religious Oragnizations': 'orgs/religious',
-        'AANHPI Organizations': 'orgs/aanhpi',
-        'LGBTQIA+ Organizations': 'orgs/lgbtqiap'
+        'Affiliates': 'affiliates'
     },
-    'Contact': ''
 }
 
 context = { 'pages' : pages }
