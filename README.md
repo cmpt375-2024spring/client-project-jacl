@@ -9,7 +9,7 @@ This web application was build for the CMPT 375 (Web Applications) class of spri
 - Zac Durham (Full Stack Developer)
 - Anthony Mackay (Full Stack Developer)
 - Arogya (Full Stack Developer)
-- Chhahana (Full Stack Developer)
+- Chahana (Full Stack Developer)
 
 ### Designers
 - Kayla (Spokesperson, UX designer, graphic design, and user testing)
