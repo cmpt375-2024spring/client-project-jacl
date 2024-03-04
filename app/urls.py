@@ -11,9 +11,5 @@ urlpatterns = [
     path('events/', views.events, name='events'),
     path('scholarships/', views.scholarships, name='scholarships'),
     path('orgs/', views.orgs, name='orgs'),
-    path('orgs/japanese/'),
-    path('orgs/religious/'),
-    path('orgs/aanhpi/'),
-    path('orgs/lgbtqiap/'),
     path('contact/', views.contact, name='contact')
 ]
