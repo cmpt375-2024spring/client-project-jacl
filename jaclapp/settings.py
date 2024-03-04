@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-ki8hatv+a40!g!me2$=ymg5eb-h*vmoxof#s-c!_y(b4!-k9di
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', '127.0.0.1:8000']
 
 
 # Application definition
@@ -124,3 +124,13 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#Email
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'mail.merofinances.com'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'jacl@merofinances.com'  
+EMAIL_HOST_PASSWORD = 'Abc123xyz#001'
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = False
+# EMAIL_SSL_CERTFILE = '/Users/chahana/Desktop/client-project-jacl/venv/lib/python3.12/site-packages/certifi/cacert.pem'
