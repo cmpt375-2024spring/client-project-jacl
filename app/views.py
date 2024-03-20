@@ -21,6 +21,9 @@ pages = {
 context = { 'pages' : pages }
 
 def index(request):
+    # SEND IN CONTEXT:
+    # File names of slideshow images from database
+    # Event list from database along with the file name of images
     context['active'] = ''
     return render(request, 'app/index.html', context)
 

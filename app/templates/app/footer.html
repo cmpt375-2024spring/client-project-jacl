@@ -10,7 +10,7 @@
                             <ul class="list-unstyled">
                                 <li><strong>{{ title }}</strong></li>
                                 {% for subpage, link in subpages.items %}
-                                    <li><a class="text-primary" href="{{ link }}">{{ subpage }}</a></li>
+                                    <li><a class="text-primary" href="/{{ link }}">{{ subpage }}</a></li>
                                 {% endfor %}
                             </ul>
                         </div>
