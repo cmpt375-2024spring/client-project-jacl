@@ -12,3 +12,7 @@ main{
     font-weight: 400;
     font-style: normal;
 }
+
+.custom-padding {
+    padding-left: 20px; 
+}
