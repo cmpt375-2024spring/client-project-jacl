@@ -1,6 +1,14 @@
 {% extends "admin/base.html" %}
-
+{% block extrahead %}
+    <style>
+        html[data-theme="light"],:root{
+            --primary: lawngreen;
+            --secondary: lawngreen;
+        }
+    </style>
+{% endblock %}
 {% block title %}
     JACL Admin
     {{ block.super }}
 {% endblock %}
+
