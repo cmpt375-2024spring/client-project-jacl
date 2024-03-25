@@ -23,7 +23,16 @@ pages = {
 context = { 'pages' : pages }
 
 def index(request):
+    images = HomePageImage.objects.all().values()
+    finalImages = []
+    for image in images:
+        imageObj = {}
+        imageObj['title'] = image['title']
+        imageObj['image'] = "user_upload/" + image['image'].split("/")[-2] + '/' + image['image'].split("/")[-1]
+        finalImages.append(imageObj)
     context['active'] = ''
+    context['images'] = finalImages
+
     return render(request, 'app/index.html', context)
 
 def mission(request):
