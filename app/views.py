@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import *
 
 # Create your views here.
 pages = {
@@ -21,10 +22,16 @@ pages = {
 context = { 'pages' : pages }
 
 def index(request):
-    # SEND IN CONTEXT:
-    # File names of slideshow images from database
-    # Event list from database along with the file name of images
+    images = HomePageImage.objects.all().values()
+    finalImages = []
+    for image in images:
+        imageObj = {}
+        imageObj['title'] = image['title']
+        imageObj['image'] = "user_upload/" + image['image'].split("/")[-2] + '/' + image['image'].split("/")[-1]
+        finalImages.append(imageObj)
     context['active'] = ''
+    context['images'] = finalImages
+
     return render(request, 'app/index.html', context)
 
 def mission(request):
