@@ -184,3 +184,4 @@ cython_debug/
 staticfiles
 *user_uploads
 migrations
+/app/static/user_upload/
