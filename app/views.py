@@ -1,6 +1,8 @@
+import datetime
 from django.shortcuts import render
+from .models import *
+import json
 
-# Create your views here.
 pages = {
     'About Us': {
         'Mission & Vision': 'mission',
@@ -21,9 +23,6 @@ pages = {
 context = { 'pages' : pages }
 
 def index(request):
-    # SEND IN CONTEXT:
-    # File names of slideshow images from database
-    # Event list from database along with the file name of images
     context['active'] = ''
     return render(request, 'app/index.html', context)
 
@@ -41,6 +40,29 @@ def history(request):
 
 def events(request):
     context['active'] = 'events'
+    allEvents = Event.objects.all().values()
+    # upcomingFiveEvents = Event.objects.all().filter(start_date__gte=datetime.date.today()).values()[:5]
+    returnAllEvents = []
+    for index,event in enumerate(allEvents):
+        eventDetails = {}
+        eventDetails['title'] = event['title']
+        eventDetails['description'] = event['description']
+        eventDetails['location'] = event['location']
+        eventDetails['registration_link'] = event['registration_link']
+        eventDetails['banner_image'] = "user_uploads/" + event['banner_image'].split("/")[-2] + '/' + event['banner_image'].split("/")[-1]
+        if(event['start_time'] and event['end_time']):
+            eventDetails['start'] = event['start_date'].strftime("%Y-%m-%d") + "T" + event['start_time'].strftime("%H:%M:%S")
+            eventDetails['end'] = event['end_date'].strftime("%Y-%m-%d") + "T" + event['end_time'].strftime("%H:%M:%S")
+            eventDetails['allDay'] = False
+        else:
+            eventDetails['start'] = event['start_date'].strftime("%Y-%m-%d")
+            eventDetails['end'] = event['end_date'].strftime("%Y-%m-%d")
+            eventDetails['allDay'] = True
+
+        returnAllEvents.append(eventDetails)
+
+    context['allEvents'] = json.dumps(returnAllEvents)
+    # print(returnAllEvents)
     return render(request, 'app/events.html', context)
 
 def join(request):
