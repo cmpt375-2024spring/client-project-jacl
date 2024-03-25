@@ -7,7 +7,7 @@ from django.dispatch import receiver
 class Event(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
-    banner_image = models.ImageField(upload_to='app/static/user_uploads/event_banners/')
+    banner_image = models.ImageField(upload_to='app/static/user_upload/event_banners/')
     start_date = models.DateField()
     start_time = models.TimeField(null=True, blank=True)
     end_date = models.DateField()
