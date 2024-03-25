@@ -49,7 +49,7 @@ def events(request):
         eventDetails['description'] = event['description']
         eventDetails['location'] = event['location']
         eventDetails['registration_link'] = event['registration_link']
-        eventDetails['banner_image'] = "user_uploads/" + event['banner_image'].split("/")[-2] + '/' + event['banner_image'].split("/")[-1]
+        eventDetails['banner_image'] = "user_upload/" + event['banner_image'].split("/")[-2] + '/' + event['banner_image'].split("/")[-1]
         if(event['start_time'] and event['end_time']):
             eventDetails['start'] = event['start_date'].strftime("%Y-%m-%d") + "T" + event['start_time'].strftime("%H:%M:%S")
             eventDetails['end'] = event['end_date'].strftime("%Y-%m-%d") + "T" + event['end_time'].strftime("%H:%M:%S")
