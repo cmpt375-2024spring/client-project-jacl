@@ -183,3 +183,4 @@ cython_debug/
 
 staticfiles
 /app/static/user_upload/
+migrations

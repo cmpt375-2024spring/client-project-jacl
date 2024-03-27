@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from .models import *
+from django.contrib.auth.models import User
 
 # Create your views here.
 pages = {
@@ -33,6 +35,19 @@ def mission(request):
 
 def board(request):
     context['active'] = 'board'
+    board_members = BoardMember.objects.all().values()
+    return_board_members = []
+    for members in board_members:
+        member_details = {}
+        #print(User.objects.all().values('username').filter(pk=members))
+        member_details['user'] = User.objects.all().filter(username= 'username' )
+        member_details['bio'] = members['bio']
+        member_details['profile_picture'] = "user_upload/" + members['profile_picture'].split("/")[-2] + '/' + members['profile_picture'].split("/")[-1]
+        return_board_members.append(member_details)
+    
+    # print(return_board_members)
+
+    context['board_members'] = board_members
     return render(request, 'app/board.html', context)
 
 def history(request):
