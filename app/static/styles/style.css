@@ -1,6 +1,12 @@
 main{
     min-height: 90vh;
 }
+
+:root{
+    --bs-blue: #06defd;
+    --bs-primary: #002859;
+}
+
 .font-family-julius-sans{
     font-family: "Julius Sans One", sans-serif;
     font-weight: 400;
