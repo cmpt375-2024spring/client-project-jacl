@@ -50,9 +50,10 @@ def history(request):
 def events(request):
     context['active'] = 'events'
     allEvents = Event.objects.all().values()
-    # upcomingFiveEvents = Event.objects.all().filter(start_date__gte=datetime.date.today()).values()[:5]
-    returnAllEvents = []
-    for index,event in enumerate(allEvents):
+    upcomingEvents = Event.objects.all().filter(start_date__gte=datetime.date.today()).values()
+    arrayOfAllEvents = []
+    arrayOfUpcomingEvents = []
+    for event in allEvents:
         eventDetails = {}
         eventDetails['title'] = event['title']
         eventDetails['description'] = event['description']
@@ -68,10 +69,26 @@ def events(request):
             eventDetails['end'] = event['end_date'].strftime("%Y-%m-%d")
             eventDetails['allDay'] = True
 
-        returnAllEvents.append(eventDetails)
+        arrayOfAllEvents.append(eventDetails)
+    
+    for event in upcomingEvents:
+        eventDetails = {}
+        eventDetails['title'] = event['title']
+        eventDetails['description'] = event['description']
+        eventDetails['location'] = event['location']
+        eventDetails['registration_link'] = event['registration_link']
+        eventDetails['banner_image'] = "user_upload/" + event['banner_image'].split("/")[-2] + '/' + event['banner_image'].split("/")[-1]
+        if(event['start_time'] and event['end_time']):
+            eventDetails['start'] = event['start_date'].strftime("%b %d, %Y") + " - " + event['start_time'].strftime("%-I:%M %p")
+            eventDetails['end'] = event['end_date'].strftime("%b %d, %Y") + " - " + event['end_time'].strftime("%-I:%M %p")
+        else:
+            eventDetails['start'] = event['start_date'].strftime("%b %d, %Y")
+            eventDetails['end'] = event['end_date'].strftime("%b %d, %Y")
+        
+        arrayOfUpcomingEvents.append(eventDetails)
 
-    context['allEvents'] = json.dumps(returnAllEvents)
-    # print(returnAllEvents)
+    context['upcomingEvents'] = arrayOfUpcomingEvents
+    context['allEvents'] = json.dumps(arrayOfAllEvents)
     return render(request, 'app/events.html', context)
 
 def join(request):
