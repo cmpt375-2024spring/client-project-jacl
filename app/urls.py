@@ -13,3 +13,4 @@ urlpatterns = [
     path('affiliates/', views.affiliates, name='orgs'),
     path('contact/', views.contact, name='contact'),
 ]
+
