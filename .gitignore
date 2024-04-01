@@ -182,3 +182,5 @@ cython_debug/
 .idea/**/dbnavigator.xml
 
 staticfiles
+*user_upload
+/app/migrations/

@@ -9,9 +9,11 @@ def user_import():
         for row in reader(file):
             _, created = User.objects.get_or_create(
                 username=row[0],
-                email=row[1],
-                password=hasher.encode(hasher(), row[2], hasher.salt(hasher())),
-                is_staff=row[3],
+                first_name=row[1],
+                last_name=row[2],
+                email=row[3],
+                password=hasher.encode(hasher(), row[4], hasher.salt(hasher())),
+                is_staff=row[5],
             )
             print(created)
 
