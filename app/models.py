@@ -16,6 +16,10 @@ class Event(models.Model):
     registration_link = models.CharField(max_length=255, null=True, blank=True)
     modified_on = models.DateTimeField(editable=False, auto_now=True)
 
+    def __str__(self):
+        return self.title
+
+
 class HomePageImage(models.Model):
     title = models.CharField(max_length=50)
     image = models.ImageField(upload_to='app/static/user_upload/homePage')
