@@ -22,6 +22,7 @@ pages = {
 
 context = { 'pages' : pages }
 
+
 def index(request):
     images = HomePageImage.objects.all().values()
     finalImages = []
@@ -30,22 +31,34 @@ def index(request):
         imageObj['title'] = image['title']
         imageObj['image'] = "user_upload/" + image['image'].split("/")[-2] + '/' + image['image'].split("/")[-1]
         finalImages.append(imageObj)
+    home_page_events = Event.objects.all().values()
+    finalEvents = []
+    for event in home_page_events:
+        eventObject = {}
+        eventObject['title'] = event['title']
+        eventObject['banner_image'] = "user_upload/" + event['banner_image'].split("/")[-2] + '/' + \
+                                                            event['banner_image'].split("/")[-1]
+        finalEvents.append(eventObject)
     context['active'] = ''
     context['images'] = finalImages
-
+    context['events'] = finalEvents
     return render(request, 'app/index.html', context)
+
 
 def mission(request):
     context['active'] = 'mission'
     return render(request, 'app/mission.html', context)
 
+
 def board(request):
     context['active'] = 'board'
     return render(request, 'app/board.html', context)
 
+
 def history(request):
     context['active'] = 'history'
     return render(request, 'app/history.html', context)
+
 
 def events(request):
     context['active'] = 'events'
