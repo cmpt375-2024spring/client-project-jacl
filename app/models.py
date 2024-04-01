@@ -5,10 +5,19 @@ from django.dispatch import receiver
 
 
 class BoardMember(models.Model):
+    POSITION_CHOICES = [
+        ('1', 'PRESIDENT'),
+        ('2', 'TREASURER'),
+        ('3', 'SECRETARY'),
+        ('4', 'MEMBERSHIP'),
+        ('5', 'YOUTH REP'),
+    ]
+
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField()
     profile_picture = models.ImageField(upload_to='app/static/user_upload/boardmember/')
-
+    position = models.CharField(max_length=1, choices=POSITION_CHOICES)
+    
     def __str__(self):
         return self.user.get_full_name() if self.user.get_full_name() else self.user.get_username()
 

@@ -40,14 +40,15 @@ def board(request):
     for members in board_members:
         member_details = {}
         #print(User.objects.all().values('username').filter(pk=members))
-        member_details['user'] = User.objects.all().filter(username= 'username' )
+        userData = list(User.objects.all().filter(pk= members['user_id']).values())[0]
+        member_details['name'] = userData['first_name'] + " " + userData['last_name']
         member_details['bio'] = members['bio']
-        member_details['profile_picture'] = "user_upload/" + members['profile_picture'].split("/")[-2] + '/' + members['profile_picture'].split("/")[-1]
+        member_details['profile_picture'] = "user_upload/" + members['profile_picture'].split("/")[-2] + "/"  + members['profile_picture'].split("/")[-1]
         return_board_members.append(member_details)
     
     # print(return_board_members)
 
-    context['board_members'] = board_members
+    context['board_members'] = return_board_members
     return render(request, 'app/board.html', context)
 
 def history(request):

@@ -1,4 +1,5 @@
 {% extends "app/master.html" %}
+{% load static %}
 
 {% block title %}
     Board Members
@@ -6,18 +7,19 @@
 
 {% block content %}
     
-
+{{board_members}}
 <div class="container-fluid">
     <div class="col justify-content-md-center ml-4">
         <h1 class="font-family-julius-sans mt-4 mb-4">BOARD MEMBERS</h1>
+        {% for member in board_members %}
         <!-- Board Member 1 -->
         <div class="row mb-4"> 
             <div class="col-md-3">
-                <img src="https://via.placeholder.com/200/CCCCCC/FFFFFF?text=Grey+Image" alt="KELLY ASAO" class="w-100">
+                <img src="{%  static member.profile_picture %}" alt="{{ member.name }}" class="w-100">
             </div>
             <!-- Information -->
             <div class="col-md-9">
-                <h2 class="font-family-julius-sans font-weight-bold">KELLY ASAO</h2>
+                <h2 class="font-family-julius-sans font-weight-bold">{{ member.name }}</h2>
                 <p class="font-family-julius-sans">PRESIDENT</p>
                 <p class="font-family-julius-sans"><a href="mailto:president@slcjacl.com" style="text-decoration: underline;">president@slcjacl.com</a></p>
             </div>
@@ -127,6 +129,7 @@
                     <p class="font-family-julius-sans"><a href="mailto:contact@slcjacl.com" style="text-decoration: underline;">contact@slcjacl.com</a></p>
                     </div>
             </div>
+            {% endfor %}
         </div>
     
 {% endblock content %}
