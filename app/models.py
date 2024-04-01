@@ -31,7 +31,7 @@ class HomePageImage(models.Model):
 class BoardMember(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField()
-    profile_picture = models.ImageField(upload_to='app/static/user_upload/boardmember/')
+    profile_picture = models.ImageField(upload_to='app/static/user_upload/boardmember/', default='logo/national_logo.svg')
 
     def __str__(self):
         return self.user.get_full_name() if self.user.get_full_name() else self.user.get_username()
