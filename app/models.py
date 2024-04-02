@@ -36,7 +36,8 @@ class BoardMember(models.Model):
     def __str__(self):
         return self.user.get_full_name() if self.user.get_full_name() else self.user.get_username()
 
-    @receiver(post_save, sender=User)  # methods found on https://simpleisbetterthancomplex.com/tutorial/2016/07/22/how-to-extend-django-user-model.html
+    # methods found on https://simpleisbetterthancomplex.com/tutorial/2016/07/22/how-to-extend-django-user-model.html
+    @receiver(post_save, sender=User)
     def create_user_profile(sender, instance, created, **kwargs):
         if created:
             BoardMember.objects.create(user=instance)
