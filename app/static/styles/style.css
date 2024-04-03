@@ -4,7 +4,14 @@ main{
 
 .bg-darkblue {
     background-color: #002859!important;
+}
 
+.bg-bridgered {
+    background-color: #d91604!important;
+}
+
+.bg-beige {
+    background-color: #f5e9d2!important;
 }
 
 .font-family-julius-sans{
