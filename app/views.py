@@ -9,7 +9,10 @@ pages = {
         'Board Members': 'board',
         'History': 'history',
     },
-    'Events': '',
+    'Events & Statements': {
+        'Events': 'events',
+        'Statements': 'statements',
+    },
     'Get Involved': {
         'Join SLC JACL': 'join',
         'Volunteer': 'volunteer',
@@ -123,3 +126,7 @@ def affiliates(request):
 def contact(request):
     context['active'] = 'contact'
     return render(request, 'app/contact.html', context)
+
+def statements(request):
+    context['active'] = 'statements'
+    return render(request, 'app/statements.html', context)
