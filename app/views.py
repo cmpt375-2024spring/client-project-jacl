@@ -34,7 +34,7 @@ def index(request):
         imageObj['title'] = image['title']
         imageObj['image'] = "user_upload/" + image['image'].split("/")[-2] + '/' + image['image'].split("/")[-1]
         finalImages.append(imageObj)
-    home_page_events = Event.objects.all().values()
+    home_page_events = Event.objects.all().filter(start_date__gte=datetime.date.today()).values()
     finalEvents = []
     for event in home_page_events:
         eventObject = {}
