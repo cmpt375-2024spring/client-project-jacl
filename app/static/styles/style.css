@@ -14,6 +14,10 @@ main{
     background-color: #f5e9d2!important;
 }
 
+.text-black {
+    color: black!important;
+}
+
 .font-family-julius-sans{
     font-family: "Julius Sans One", sans-serif;
     font-weight: 400;
