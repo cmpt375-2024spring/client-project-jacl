@@ -49,6 +49,11 @@ def index(request):
 
 
 def mission(request):
+    missionVision = MissionVisionStatement.objects.all().values()
+    for mission_vision in missionVision:
+        context['mission'] = mission_vision['mission']
+        context['vision'] = mission_vision['vision']
+
     context['active'] = 'mission'
     return render(request, 'app/mission.html', context)
 

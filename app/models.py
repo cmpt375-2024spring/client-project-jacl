@@ -52,3 +52,12 @@ class JoinUs(models.Model):
 
     def __str__(self):
         return "Join Us Text Field"
+
+
+class MissionVisionStatement(models.Model):
+    mission = models.TextField()
+    vision = models.TextField()
+
+    def __str__(self):
+        return "Mission and Vision Statement"
+
