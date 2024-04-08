@@ -45,3 +45,12 @@ class BoardMember(models.Model):
     def save_user_profile(sender, instance, **kwargs):
         instance.boardmember.save()
 
+
+class MissionVisionStatement(models.Model):
+    mission = models.TextField()
+    vision = models.TextField()
+
+    def __str__(self):
+        return "Mission and Vision Statement"
+
+
