@@ -46,3 +46,9 @@ class BoardMember(models.Model):
     def save_user_profile(sender, instance, **kwargs):
         instance.boardmember.save()
 
+
+class JoinUs(models.Model):
+    text = models.TextField()
+
+    def __str__(self):
+        return "Join Us Text Field"

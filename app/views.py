@@ -109,6 +109,8 @@ def events(request):
 
 def join(request):
     context['active'] = 'join'
+    joinustext = JoinUs.objects.get().text
+    context['joinustext'] = joinustext
     return render(request, 'app/join.html', context)
 
 def volunteer(request):
