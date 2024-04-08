@@ -14,8 +14,8 @@ class BoardMember(models.Model):
     ]
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    bio = models.TextField()
-    profile_picture = models.ImageField(upload_to='app/static/user_upload/boardmember/')
+    bio = models.TextField(null = True, default = "", blank=True)
+    profile_picture = models.ImageField(upload_to='app/static/user_upload/boardmember/', blank = True)
     position = models.CharField(max_length=1, choices=POSITION_CHOICES)
     
     def __str__(self):
