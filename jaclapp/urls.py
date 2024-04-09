@@ -18,7 +18,8 @@ from django.contrib import admin
 from django.urls import include, path
 
 admin.site.site_header = "JACL Administration"
-admin.site.site_title = "JACL Admin"
+admin.site.site_title = "JACL Administration"
+admin.site.index_title = "JACL Administration"
 
 urlpatterns = [
     path('', include('app.urls')),
