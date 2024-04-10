@@ -11,6 +11,10 @@ class BoardMember(models.Model):
         ('3', 'SECRETARY'),
         ('4', 'MEMBERSHIP'),
         ('5', 'YOUTH REP'),
+        ('6', 'SALT LAKE BUDDHIST TEMPLE LIASON'),
+        ('7', 'MATSUMOTO LIASON'),
+        ('8', 'PEACH GARDEN LIASON'),
+        ('9', 'AT LARGE'),
     ]
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)

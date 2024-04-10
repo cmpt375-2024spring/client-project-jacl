@@ -34,7 +34,7 @@ def mission(request):
     return render(request, 'app/mission.html', context)
 
 def board(request):
-    all_positions = ['', 'PRESIDENT', 'TREASURER', 'SECRETARY', 'MEMBERSHIP', 'YOUTH REP',]
+    all_positions = ['', 'PRESIDENT', 'TREASURER', 'SECRETARY', 'MEMBERSHIP', 'YOUTH REP', 'SALT LAKE BUDDHIST TEMPLE LIASON', 'MATSUMOTO LIASON', 'PEACH GARDEN LIASON', 'AT LARGE']
     context['active'] = 'board'
     board_members = BoardMember.objects.all().order_by('position').values()
     return_board_members = []
@@ -44,7 +44,10 @@ def board(request):
         userData = list(User.objects.all().filter(pk= members['user_id']).values())[0]
         member_details['name'] = userData['first_name'] + " " + userData['last_name']
         member_details['bio'] = members['bio']
-        member_details['position'] = all_positions[int(members['position'])]
+        if members['position'] is not None:
+            member_details['position'] = all_positions[int(members['position'])]
+        else:
+            member_details['position'] = None
         if(members['profile_picture']):
             member_details['profile_picture'] = "user_upload/" + members['profile_picture'].split("/")[-2] + "/"  + members['profile_picture'].split("/")[-1]
         else:
