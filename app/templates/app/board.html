@@ -6,52 +6,39 @@
 {% endblock title %}
 
 {% block content %}
-    
-{{board_members}}
+
 <div class="container-fluid">
     <div class="col justify-content-md-center ml-4">
         <h1 class="font-family-julius-sans mt-4 mb-4">BOARD MEMBERS</h1>
         {% for member in board_members %}
-        {% if member.position == 'PRESIDENT' or member.position == 'TREASURER' or member.position == 'SECRETARY' or member.position == 'MEMBERSHIP' or member.position == 'YOUTH REP'%}
-        <!-- Board Member 1 -->
-            <div class="row mb-4"> 
-                <div class="col-md-3">
-                    <img src="{%  static member.profile_picture %}" alt="{{ member.name }}" class="w-100">
+            {% if member.position == 'PRESIDENT' or member.position == 'TREASURER' or member.position == 'SECRETARY' or member.position == 'MEMBERSHIP' or member.position == 'YOUTH REP' %}
+                <!-- Board Member 1 -->
+                <div class="row mb-4"> 
+                    <div class="col-md-3">
+                        <img src="{%  static member.profile_picture %}" alt="{{ member.name }}" class="w-100">
+                    </div>
+                    <!-- Information -->
+                    <div class="col-md-9">
+                        <h2 class="font-family-julius-sans font-weight-bold">{{ member.name }}</h2>
+                        <p class="font-family-julius-sans">{{ member.position }}</p>
+                        <p class="font-family-julius-sans"><a href="mailto:{{ member.position | lower }}@slcjacl.com" style="text-decoration: underline;">{{ member.position | lower }}@slcjacl.com</a></p>
+                    </div>
                 </div>
-                <!-- Information -->
-                <div class="col-md-9">
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <div class="row">
+        {% for member in board_members %}
+            {% if member.position == 'SALT LAKE BUDDHIST TEMPLE LIASON' or member.position == 'MATSUMOTO LIASON' or member.position == 'PEACH GARDEN LIASON' or member.position == 'AT LARGE' %}
+            <div class="col-md-3">
                     <h2 class="font-family-julius-sans font-weight-bold">{{ member.name }}</h2>
                     <p class="font-family-julius-sans">{{ member.position }}</p>
-                    <p class="font-family-julius-sans"><a href="mailto:{{ member.position | lower }}@slcjacl.com" style="text-decoration: underline;">{{ member.position | lower }}@slcjacl.com</a></p>
                 </div>
-            </div>
-            </div>
-            {% else %}
-            {% for member in board_members %}
-            {% if member.position == 'SALT LAKE BUDDHIST TEMPLE LIASON' or member.position == 'MATSUMOTO LIASON' or member.position == 'PEACH GARDEN LIASON' or member.position == 'AT LARGE'%}
-            <div class="row mb-4"> 
-                <div class="col-md-3">
-                    <h2 class="font-family-julius-sans font-weight-bold">{{ member.name }}</h2>
-                    <p class="font-family-julius-sans">SALT LAKE BUDDHIST TEMPLE LIASON</p>
-                </div>
-                <div class="col-md-3">
-                    <h2 class="font-family-julius-sans font-weight-bold">{{ member.name }}</h2>
-                    <p class="font-family-julius-sans">MATSUMOTO LIASON</p>
-                </div>
-                <div class="col-md-3">
-                    <h2 class="font-family-julius-sans font-weight-bold">{{ member.name }}</h2>
-                    <p class="font-family-julius-sans">PEACH GARDEN LIASON</p>
-                </div>
-                <div class="col-md-3">
-                    <h2 class="font-family-julius-sans font-weight-bold">{{ member.name }}</h2>
-                    <p class="font-family-julius-sans">AT LARGE</p>
-                </div>
-
-            </div>
             {% endif %}
-            {% endfor %}
-        {% endif %}
-    {% endfor %}
-        </div>
-    
+        {% endfor %}
+    </div>
+
+</div>
+
 {% endblock content %}
