@@ -60,4 +60,12 @@ class MissionVisionStatement(models.Model):
 
     def __str__(self):
         return "Mission and Vision Statement"
+    
+class Statement(models.Model):
+    title = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='app/static/user_upload/statement/')
+    description = models.TextField()
+
+    def __str__(self):
+        return self.title
 

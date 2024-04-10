@@ -135,5 +135,26 @@ def contact(request):
     return render(request, 'app/contact.html', context)
 
 def statements(request):
+    allStatements = Statement.objects.all().values()
+    statements = []
+    for statement in allStatements:
+        statementInfo = {}
+        statementInfo['id'] = statement['id']
+        statementInfo['title'] = statement['title']
+        statementInfo['slug'] = statement['title'].replace(" ", "_")
+        statements.append(statementInfo)
+    context['statements'] = statements
     context['active'] = 'statements'
     return render(request, 'app/statements.html', context)
+
+def statement(request):
+    statement_id = request.GET['statement_id']
+    thisStatement = Statement.objects.all().filter(pk=statement_id).values()
+    for statement in thisStatement:
+        statementInfo = {}
+        statementInfo['title'] = statement['title']
+        statementInfo['description'] = statement['description']
+        statementInfo['image'] = "user_upload/" + statement['image'].split("/")[-2] + '/' + statement['image'].split("/")[-1]
+    context['statement'] = statementInfo
+    context['active'] = 'statement'
+    return render(request, 'app/statement.html', context)
