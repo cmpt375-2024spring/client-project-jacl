@@ -13,5 +13,6 @@ urlpatterns = [
     path('affiliates/', views.affiliates, name='orgs'),
     path('contact/', views.contact, name='contact'),
     path('statements/', views.statements, name='statements'),
+    path('statement/', views.statement, name='statement'),
 ]
 

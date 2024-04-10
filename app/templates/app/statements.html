@@ -5,13 +5,12 @@
 {% endblock title %}
 {% block content %}
     <div class="container">
-        <div class="bg-light d-flex flex-row align-items-center justify-content-between w-100 px-5 py-3 my-2">
-            <h2> Statement 1 </h2>
-            <button class="btn btn-transparent p-3"><i class="bi bi-chevron-down"></i></button>
+        {% for statement in statements %}
+        <div class=" {% if forloop.counter0|divisibleby:2 %} bg-darkblue text-light {% else %} bg-light {% endif %} d-flex flex-row align-items-center justify-content-between w-100 px-5 py-3 my-2">
+            <h2 class="font-family-ysabeau-sc"> {{statement.title}} </h2>
+            <a href="/statement?statement={{statement.slug}}&statement_id={{statement.id}}"><button class="btn btn-transparent {% if forloop.counter0|divisibleby:2 %} text-light {% endif %}"> Read Statement <i class="bi bi-chevron-right"></i></button></a>
         </div>
-    </div>
-    <div class="container">
-        
+        {% endfor %}
     </div>
     <script type="text/javascript">
 
