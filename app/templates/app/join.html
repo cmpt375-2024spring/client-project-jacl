@@ -3,6 +3,19 @@
     Join JACL
 {% endblock title %}
 {% block content %}
+    <style>
+        .top-circle {
+            width: 15em;
+            height: 15em;
+            background-color: #9ecfeb;
+        }
+
+        .middle-circle {
+            width: 25em;
+            height: 25em;
+            background-color: #50a0ce;
+        }
+    </style>
     <div class="container">
         <div class="bg-bridgered d-flex flex-row align-items-center justify-content-between w-100 px-5 py-3 my-2">
             <h1 class="font-family-eb-garamond text-white">Join Us</h1>
@@ -10,10 +23,24 @@
                 <button class="font-family-eb-garamond bg-beige btn btn-success text-black">Click Here to Join JACL!</button>
             </a>
         </div>
-        <br>
-        <br>
-        <p class="h5 font-family-eb-garamond">{{ joinustext }}
-        </p>
     </div>
-
+    <br>
+    <br>
+    <div class="container">
+        <div class="top-circle rounded-circle position-absolute top-100 end-0">
+            <p class="h5 font-family-eb-garamond text-light">Join the JACL in Our Mission for Civil Rights!</p>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="container">
+        <div class="middle-circle rounded-circle position-absolute bottom-0 start-100">
+            <p class="h5 font-family-eb-garamond text-light">Founded in 1929, the Japanese American Citizens League (JACL) is the
+                nation’s first and largest Asian American civil rights organization.
+                As a 501(c)3 nonprofit charitable organization, the JACL champions and advocates for the
+                Japanese American, Asian Pacific Islander American (APIA), and civil rights communities
+                through advocacy, education, and leadership development.
+            </p>
+        </div>
+    </div>
 {% endblock content %}
