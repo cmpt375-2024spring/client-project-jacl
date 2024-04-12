@@ -15,6 +15,12 @@
             height: 28em;
             background-color: #50a0ce;
         }
+
+        .bottom-circle {
+            width: 25em;
+            height: 25em;
+            background-color: #002859;
+        }
     </style>
     <div class="container">
         <div class="bg-bridgered d-flex flex-row align-items-center justify-content-between w-100 px-5 py-3 my-2">
@@ -25,24 +31,21 @@
         </div>
     </div>
     <br>
-    <div class="container">
+    <div class="container" style="min-height: 100vh">
         <div class="position-relative w-auto h-100 p-3 bg-dark">
             <div class="row position-absolute top-circle rounded-circle top-0 end-0 align-items-center">
                 <div class="flex-column justify-content-center h-auto w-auto p-2">
-                    <p class="h6 font-family-eb-garamond text-light text-center">Join the JACL<br> in Our Mission for Civil Rights!</p>
+                    <p class="h6 font-family-eb-garamond text-light text-center">{{ joinus.top_circle }}</p>
                 </div>
-
             </div>
             <div class="row middle-circle rounded-circle position-absolute bottom-0 start-0 align-items-center">
                 <div class="flex-column justify-content-center h-auto w-auto p-2">
-                    <p class="h7 font-family-eb-garamond text-light text-center">Founded in 1929, the Japanese American Citizens League (JACL) is the
-                        nation’s first and largest Asian American civil rights organization.
-                    </p>
-                    <p class="h7 font-family-eb-garamond text-light text-center">
-                        As a 501(c)3 nonprofit charitable organization, the JACL champions and advocates for the
-                        Japanese American, Asian Pacific Islander American (APIA), and civil rights communities
-                        through advocacy, education, and leadership development.
-                    </p>
+                    <p class="h7 font-family-eb-garamond text-light text-center">{{ joinus.mid_circle }}</p>
+                </div>
+            </div>
+            <div class="row bottom-circle rounded-circle position-absolute bottom-0 end-0 align-items-center">
+                <div class="flex-column justify-content-center h-auto w-auto p-2" >
+                    <p class="h7 font-family-eb-garamond text-light text-center">{{ joinus.bottom_circle }}</p>
                 </div>
             </div>
         </div>

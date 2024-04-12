@@ -21,9 +21,11 @@ def user_import():
 
 def joinus_import():
     with open("./app/static/csv/joinus.csv", mode='r', encoding='utf-8') as file:
-        for row in reader(file):
+        for row in reader(file, delimiter=':'):
             _, created = JoinUs.objects.get_or_create(
-                text=row[0]
+                top_circle=row[0],
+                mid_circle=row[1],
+                bottom_circle=row[2],
             )
             print(created)
 

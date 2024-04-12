@@ -48,7 +48,9 @@ class BoardMember(models.Model):
 
 
 class JoinUs(models.Model):
-    text = models.TextField()
+    top_circle = models.TextField()
+    mid_circle = models.TextField()
+    bottom_circle = models.TextField()
 
     def __str__(self):
         return "Join Us Text Field"
