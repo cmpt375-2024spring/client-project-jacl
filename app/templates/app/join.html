@@ -13,6 +13,13 @@
             right: 15em;
         }
 
+        .top-circle @media (max-width: 1198px){
+            position: relative;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 10em;
+        }
+
         .middle-circle {
             width: 29.3em;
             height: 28em;
@@ -22,6 +29,11 @@
             left:8em;
         }
 
+        .middle-circle @media (max-width: 1198px){
+            position: relative;
+            margin: 20em auto 20em;
+        }
+
         .bottom-circle {
             width: 25em;
             height: 25em;
@@ -29,6 +41,13 @@
             position: absolute;
             top: 19em;
             right: 8em;
+        }
+
+        .bottom-circle @media (max-width: 1198px){
+            position: relative;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 10em;
         }
     </style>
     <div class="container">
@@ -41,7 +60,7 @@
     </div>
     <br>
     <div class="container" style="min-height: 100vh">
-        <div class="position-relative w-auto h-100 p-3">
+        <div class="row position-relative w-auto h-100 p-3 align-items-center">
             <div class="row rounded-circle top-circle align-items-center">
                 <div class="flex-column justify-content-center h-auto w-auto p-2">
                     <p class="h6 font-family-eb-garamond text-light text-center">Join the JACL<br> in Our Mission for
