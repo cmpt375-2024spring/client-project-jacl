@@ -1,1 +1,12 @@
-user,User,Name,user@example.com,password,True
+PRESIDENT,Kelly,Asao,president@slcjacl.com,jacl2024,True
+TREASURER,Metra,Barton,treasurer@slcjacl.com,jacl2024,False
+SECRETARY,Olivera,Masters,secretary@slcjacl.com,jacl2024,False
+MEMBERSHIP,Jason,Kunisaki,membership@slcjacl.com,jacl2024,False
+YOUTH_REP,Cameron,Sueoka,,jacl2024,False
+SALT_LAKE_TEMPLE_LIASON,Micheal,Iwaski,,jacl2024,False
+MATSUMOTO_LIASON,Ikue,Chambles,,jacl2024,False
+PEACH_GARDEN_LIASON,Cody,Craynor,,jacl2024,False
+AT_LARGE,Jeff,Imati,,jacl2024,False
+
+
+
