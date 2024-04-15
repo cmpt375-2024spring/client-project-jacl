@@ -2,6 +2,7 @@ import datetime
 from django.shortcuts import render
 from .models import *
 import json
+from django.contrib.auth.models import User
 
 pages = {
     'About Us': {
@@ -59,7 +60,30 @@ def mission(request):
 
 
 def board(request):
+    all_positions = ['', 'PRESIDENT', 'TREASURER', 'SECRETARY', 'MEMBERSHIP', 'YOUTH REP', 'SALT LAKE BUDDHIST TEMPLE LIASON', 'MATSUMOTO LIASON', 'PEACH GARDEN LIASON', 'AT LARGE']
     context['active'] = 'board'
+    board_members = BoardMember.objects.all().order_by('position').values()
+    return_board_members = []
+    for members in board_members:
+        member_details = {}
+        #print(User.objects.all().values('username').filter(pk=members))
+        userData = list(User.objects.all().filter(pk= members['user_id']).values())[0]
+        member_details['name'] = userData['first_name'] + " " + userData['last_name']
+        member_details['bio'] = members['bio']
+        if members['position'] is not None:
+            member_details['position'] = all_positions[int(members['position'])]
+        else:
+            member_details['position'] = None
+        if(members['profile_picture']):
+            member_details['profile_picture'] = "user_upload/" + members['profile_picture'].split("/")[-2] + "/"  + members['profile_picture'].split("/")[-1]
+        else:
+            member_details['profile_picture'] = None
+            
+        return_board_members.append(member_details)
+    
+    # print(return_board_members)
+
+    context['board_members'] = return_board_members
     return render(request, 'app/board.html', context)
 
 

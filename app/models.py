@@ -29,10 +29,23 @@ class HomePageImage(models.Model):
 
 
 class BoardMember(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    bio = models.TextField()
-    profile_picture = models.ImageField(upload_to='app/static/user_upload/boardmember/', default='logo/JACL_Flower.png')
+    POSITION_CHOICES = [
+        ('1', 'PRESIDENT'),
+        ('2', 'TREASURER'),
+        ('3', 'SECRETARY'),
+        ('4', 'MEMBERSHIP'),
+        ('5', 'YOUTH REP'),
+        ('6', 'SALT LAKE BUDDHIST TEMPLE LIASON'),
+        ('7', 'MATSUMOTO LIASON'),
+        ('8', 'PEACH GARDEN LIASON'),
+        ('9', 'AT LARGE'),
+    ]
 
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    bio = models.TextField(null = True, default = "", blank=True)
+    profile_picture = models.ImageField(upload_to='app/static/user_upload/boardmember/', blank = True)
+    position = models.CharField(max_length=1, choices=POSITION_CHOICES)
+    
     def __str__(self):
         return self.user.get_full_name() if self.user.get_full_name() else self.user.get_username()
 
