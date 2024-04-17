@@ -11,11 +11,11 @@
     <div class="col justify-content-md-center ml-4">
         <h1 class="font-family-julius-sans mt-4 mb-4">BOARD MEMBERS</h1>
         {% for member in board_members %}
-            {% if member.position == 'PRESIDENT' or member.position == 'TREASURER' or member.position == 'SECRETARY' or member.position == 'MEMBERSHIP' or member.position == 'YOUTH REP' %}
+            {% if member.position == 'PRESIDENT' or member.position == 'TREASURER' or member.position == 'SECRETARY' or member.position == 'MEMBERSHIP' %}
                 <!-- Board Member 1 -->
                 <div class="row mb-4"> 
                     <div class="col-md-3">
-                        <img src="{%  static member.profile_picture %}" alt="{{ member.name }}" class="w-100">
+                        <img src="{%  static member.profile_picture %}" alt="{{ member.name }}" class="w-100 rounded shadow">
                     </div>
                     <!-- Information -->
                     <div class="col-md-9">
@@ -28,12 +28,12 @@
         {% endfor %}
     </div>
 
-    <div class="row">
+    <div class="row px-5 d-flex flex-row justify-content-between">
         {% for member in board_members %}
-            {% if member.position == 'SALT LAKE BUDDHIST TEMPLE LIASON' or member.position == 'MATSUMOTO LIASON' or member.position == 'PEACH GARDEN LIASON' or member.position == 'AT LARGE' %}
-            <div class="col-md-3">
-                    <h2 class="font-family-julius-sans font-weight-bold">{{ member.name }}</h2>
-                    <p class="font-family-julius-sans">{{ member.position }}</p>
+            {% if member.position == 'YOUTH REP' or member.position == 'SALT LAKE BUDDHIST TEMPLE LIASON' or member.position == 'MATSUMOTO LIASON' or member.position == 'PEACH GARDEN LIASON' or member.position == 'AT LARGE' %}
+            <div class="d-flex flex-column align-items-center">
+                    <span class="badge badge-lg badge-secondary px-3 font-family-julius-sans"><span style="font-size: 15pt">{{ member.name }}</span></span>
+                    <small class="font-family-julius-sans">{{ member.position }}</small>
                 </div>
             {% endif %}
         {% endfor %}
