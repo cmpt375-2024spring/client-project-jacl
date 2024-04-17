@@ -4,26 +4,24 @@
 {% endblock title %}
 {% block content %}
     <h1 class="font-family-ysabeau-sc"
-        style=" text-decoration: underline; position: relative; margin: 3vw; left: 26vw; font-size: 6vh;">JACL
-        Affiliate
-        Organizations</h1>
-    <div class="container">
+        style="text-decoration: underline; position: relative; margin-top: 3vw; margin-bottom: 3vw; text-align: center; font-size: 6vh;">
+        JACL Affiliate Organizations</h1>
+    <div class="container-fluid">
         {% for affiliate in affiliates %}
-            <div class="row">
-                <div class="col-12">
-                    <!-- Vertical stack div #1 with header -->
-                    <div class="d-flex flex-column align-items-center py-3" style="margin-bottom: 3vh;">
-                        <h1 class="font-family-ysabeau-sc">{{ affiliate.name }}</h1>
-                        <p class="font-family-eb-garamond" style="font-size: 3vh;">{{ affiliate.description }}</p>
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-10 col-lg-8">
+                    <div class="d-flex flex-column align-items-center py-3 bg-light" style="margin-bottom: 3vh;">
+                        <h2 class="font-family-ysabeau-sc">{{ affiliate.name }}</h2>
+                        <!-- Flex container for centered text -->
+                        <div style="width: 100%; display: flex; justify-content: center;">
+                            <p class="font-family-eb-garamond"
+                               style="font-size: 3vh; margin: 2vh 7vw;">{{ affiliate.description }}</p>
+                        </div>
                         <a href="{{ affiliate.website }}" class="font-family-eb-garamond" style="font-size: 3vh;">Learn
-                            more
-                            about {{ affiliate.name }} here </a>
+                            more about {{ affiliate.name }} here</a>
                     </div>
                 </div>
             </div>
         {% endfor %}
     </div>
-
-
-
 {% endblock content %}
