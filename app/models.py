@@ -29,9 +29,22 @@ class HomePageImage(models.Model):
 
 
 class BoardMember(models.Model):
+    POSITION_CHOICES = [
+        ('1', 'PRESIDENT'),
+        ('2', 'TREASURER'),
+        ('3', 'SECRETARY'),
+        ('4', 'MEMBERSHIP'),
+        ('5', 'YOUTH REP'),
+        ('6', 'SALT LAKE BUDDHIST TEMPLE LIASON'),
+        ('7', 'MATSUMOTO LIASON'),
+        ('8', 'PEACH GARDEN LIASON'),
+        ('9', 'AT LARGE'),
+    ]
+
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    bio = models.TextField()
-    profile_picture = models.ImageField(upload_to='app/static/user_upload/boardmember/', default='logo/national_logo.svg')
+    bio = models.TextField(null = True, default="", blank=True)
+    profile_picture = models.ImageField(upload_to='app/static/user_upload/boardmember/', blank=True, default='app/static/images/logo/JACL_Flower.png')
+    position = models.CharField(max_length=1, choices=POSITION_CHOICES, default='1', blank=True)
 
     def __str__(self):
         return self.user.get_full_name() if self.user.get_full_name() else self.user.get_username()
@@ -71,4 +84,13 @@ class Statement(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Affiliate(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField()
+    website = models.CharField(max_length=400)
+
+    def __str__(self):
+        return self.name
 

@@ -5,7 +5,7 @@
 {% load static %}
 {% block content %}
 
-<div id="slides" class="carousel slide w-100 m-0 d-flex align-items-center justify-content-center" style="max-height:50vh;overflow:hidden;" data-ride="carousel">
+<div id="slides" class="carousel slide w-100 m-0 d-flex align-items-center justify-content-center" style="overflow:hidden;" data-ride="carousel">
     <ol class="carousel-indicators">
         {% for image in images %}
             <li data-target="#slides" data-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active"{% endif %}></li>
@@ -14,7 +14,7 @@
     <div class="carousel-inner">
         {% for image in images %}
         <div class="carousel-item {% if forloop.first %}active{% endif %}">
-          <img class="d-block w-100" src="{% static image.image %}" alt="{{ image.title }}">
+          <img class="d-block w-100" style="max-height:50vh;object-fit:cover;" src="{% static image.image %}" alt="{{ image.title }}">
         </div>
         {% endfor %}
     </div>
