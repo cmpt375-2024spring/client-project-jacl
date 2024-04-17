@@ -4,20 +4,23 @@
 {% endblock title %}
 {% block content %}
     <h1 class="font-family-ysabeau-sc"
-        style="text-decoration: underline; position: relative; margin-top: 3vw; margin-bottom: 3vw; text-align: center; font-size: 6vh;">
+        style=" position: relative; margin-top: 3vw; margin-bottom: 3vw; text-align: center; font-size: 6vh;">
         JACL Affiliate Organizations</h1>
     <div class="container-fluid">
         {% for affiliate in affiliates %}
             <div class="row justify-content-center">
                 <div class="col-12 col-md-10 col-lg-8">
-                    <div class="d-flex flex-column align-items-center py-3 bg-light" style="margin-bottom: 3vh;">
+                    <div class="d-flex flex-column align-items-center py-3 {% if forloop.counter0|divisibleby:2 %} bg-darkblue text-light {% else %} bg-light {% endif %}"
+                         style="margin-bottom: 3vh;">
                         <h2 class="font-family-ysabeau-sc">{{ affiliate.name }}</h2>
                         <!-- Flex container for centered text -->
                         <div style="width: 100%; display: flex; justify-content: center;">
                             <p class="font-family-eb-garamond"
                                style="font-size: 3vh; margin: 2vh 7vw;">{{ affiliate.description }}</p>
                         </div>
-                        <a href="{{ affiliate.website }}" class="font-family-eb-garamond" style="font-size: 3vh;">Learn
+                        <a href="{{ affiliate.website }}"
+                           class="font-family-eb-garamond {% if forloop.counter0|divisibleby:2 %} text-light {% else %} text-black {% endif %}"
+                           style="font-size: 3vh; text-decoration: underline">Learn
                             more about {{ affiliate.name }} here</a>
                     </div>
                 </div>

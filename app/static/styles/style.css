@@ -1,29 +1,34 @@
-main{
+main {
     min-height: 90vh;
 }
 
 .bg-darkblue {
-    background-color: #002859!important;
+    background-color: #002859 !important;
 }
 
 .bg-bridgered {
-    background-color: #d91604!important;
+    background-color: #d91604 !important;
 }
 
 .bg-beige {
-    background-color: #f5e9d2!important;
+    background-color: #f5e9d2 !important;
+}
+
+.bg-lighter-blue {
+    background-color: #50A0ce !important;
 }
 
 .text-black {
-    color: black!important;
+    color: black !important;
 }
 
-.font-family-julius-sans{
+.font-family-julius-sans {
     font-family: "Julius Sans One", sans-serif;
     font-weight: 400;
     font-style: normal;
 }
-.font-family-ysabeau-sc{
+
+.font-family-ysabeau-sc {
     font-family: "Ysabeau SC", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
