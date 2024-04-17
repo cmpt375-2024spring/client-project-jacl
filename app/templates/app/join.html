@@ -13,11 +13,15 @@
             right: 15em;
         }
 
-        .top-circle @media (max-width: 1198px){
-            position: relative;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 10em;
+        @media (max-width: 1198px) {
+            .top-circle {
+                position: relative;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 1em;
+                top: 0;
+                right: 0;
+            }
         }
 
         .middle-circle {
@@ -29,9 +33,13 @@
             left:8em;
         }
 
-        .middle-circle @media (max-width: 1198px){
-            position: relative;
-            margin: 20em auto 20em;
+        @media screen and (max-width: 1198px) {
+            .middle-circle {
+                position: relative;
+                margin: 3em auto 3em;
+                top: 0;
+                left: 0;
+            }
         }
 
         .bottom-circle {
@@ -43,11 +51,21 @@
             right: 8em;
         }
 
-        .bottom-circle @media (max-width: 1198px){
-            position: relative;
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: 10em;
+        @media (max-width: 1198px) {
+            .bottom-circle {
+                position: relative;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 1em;
+                top: 0;
+                right: 0;
+            }
+        }
+
+        @media screen and (max-width: 1198px) {
+                .sizing {
+                    height: 77em;
+                }
         }
     </style>
     <div class="container">
@@ -56,8 +74,8 @@
         </div>
     </div>
     <br>
-    <div class="container" style="min-height: 100vh; #height: 75em;">
-        <div class="row position-relative w-auto h-100 p-3 align-items-center">
+    <div class="container sizing" style="min-height: 100vh;">
+        <div class="col position-relative w-auto h-100 p-3 justify-content-center">
             <div class="row rounded-circle top-circle align-items-center">
                 <div class="flex-column justify-content-center h-auto w-auto p-2">
                     <p class="h6 font-family-eb-garamond text-light text-center">Join the JACL<br> in Our Mission for
