@@ -15,7 +15,7 @@ pages = {
         'Volunteer': 'volunteer',
     },
     'Resources': {
-        'JACL Scholarships': 'scholarships',
+        'JACL Scholarships': '/jacl.org/scholarships',
         'Affiliates': 'affiliates'
     },
 }
