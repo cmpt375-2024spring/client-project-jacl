@@ -18,8 +18,8 @@ class BoardMember(models.Model):
     ]
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    bio = models.TextField(null=True, default="", blank=True)
-    profile_picture = models.ImageField(upload_to='app/static/user_upload/boardmember/', blank=True)
+    bio = models.TextField(null = True, default="", blank=True)
+    profile_picture = models.ImageField(upload_to='app/static/user_upload/boardmember/', blank=True, default='app/static/images/logo/JACL_Flower.png')
     position = models.CharField(max_length=1, choices=POSITION_CHOICES, default='1', blank=True)
 
     def __str__(self):
