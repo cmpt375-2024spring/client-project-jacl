@@ -3,5 +3,27 @@
     Affiliates
 {% endblock title %}
 {% block content %}
-    
+    <h1 class="font-family-ysabeau-sc"
+        style=" text-decoration: underline; position: relative; margin: 3vw; left: 26vw; font-size: 6vh;">JACL
+        Affiliate
+        Organizations</h1>
+    <div class="container">
+        {% for affiliate in affiliates %}
+            <div class="row">
+                <div class="col-12">
+                    <!-- Vertical stack div #1 with header -->
+                    <div class="d-flex flex-column align-items-center py-3" style="margin-bottom: 3vh;">
+                        <h1 class="font-family-ysabeau-sc">{{ affiliate.name }}</h1>
+                        <p class="font-family-eb-garamond" style="font-size: 3vh;">{{ affiliate.description }}</p>
+                        <a href="{{ affiliate.website }}" class="font-family-eb-garamond" style="font-size: 3vh;">Learn
+                            more
+                            about {{ affiliate.name }} here </a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+
+
 {% endblock content %}

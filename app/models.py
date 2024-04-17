@@ -42,10 +42,10 @@ class BoardMember(models.Model):
     ]
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    bio = models.TextField(null = True, default = "", blank=True)
-    profile_picture = models.ImageField(upload_to='app/static/user_upload/boardmember/', blank = True)
-    position = models.CharField(max_length=1, choices=POSITION_CHOICES)
-    
+    bio = models.TextField(null=True, default="", blank=True)
+    profile_picture = models.ImageField(upload_to='app/static/user_upload/boardmember/', blank=True)
+    position = models.CharField(max_length=1, choices=POSITION_CHOICES, default='1', blank=True)
+
     def __str__(self):
         return self.user.get_full_name() if self.user.get_full_name() else self.user.get_username()
 
@@ -73,7 +73,8 @@ class MissionVisionStatement(models.Model):
 
     def __str__(self):
         return "Mission and Vision Statement"
-    
+
+
 class Statement(models.Model):
     title = models.CharField(max_length=100)
     image = models.ImageField(upload_to='app/static/user_upload/statement/')
@@ -82,3 +83,11 @@ class Statement(models.Model):
     def __str__(self):
         return self.title
 
+
+class Affiliate(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField()
+    website = models.CharField(max_length=400)
+
+    def __str__(self):
+        return self.name
