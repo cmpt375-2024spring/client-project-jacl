@@ -4,6 +4,30 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 
+class Event(models.Model):
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+    banner_image = models.ImageField(upload_to='app/static/user_upload/event_banners/')
+    start_date = models.DateField()
+    start_time = models.TimeField(null=True, blank=True)
+    end_date = models.DateField()
+    end_time = models.TimeField(null=True, blank=True)
+    location = models.CharField(max_length=255)
+    registration_link = models.CharField(max_length=255, null=True, blank=True)
+    modified_on = models.DateTimeField(editable=False, auto_now=True)
+
+    def __str__(self):
+        return self.title
+
+
+class HomePageImage(models.Model):
+    title = models.CharField(max_length=50)
+    image = models.ImageField(upload_to='app/static/user_upload/homePage')
+
+    def __str__(self):
+        return self.title
+
+
 class BoardMember(models.Model):
     POSITION_CHOICES = [
         ('1', 'PRESIDENT'),
