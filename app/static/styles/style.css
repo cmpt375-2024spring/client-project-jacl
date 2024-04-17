@@ -1,6 +1,23 @@
 main{
     min-height: 90vh;
 }
+
+.bg-darkblue {
+    background-color: #002859!important;
+}
+
+.bg-bridgered {
+    background-color: #d91604!important;
+}
+
+.bg-beige {
+    background-color: #f5e9d2!important;
+}
+
+.text-black {
+    color: black!important;
+}
+
 .font-family-julius-sans{
     font-family: "Julius Sans One", sans-serif;
     font-weight: 400;

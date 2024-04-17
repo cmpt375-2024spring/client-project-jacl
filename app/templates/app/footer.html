@@ -1,5 +1,5 @@
 {% load static %}
-<footer class="bg-light container-fluid d-flex flex-row p-3 font-family-ysabeau-sc">
+<footer class="bg-darkblue container-fluid d-flex flex-row p-3 font-family-ysabeau-sc text-light">
     <div class="d-flex flex-row col-md-8">
         <div class="d-flex flex-column w-100">
             <h4>SITE LINKS</h4>
@@ -10,7 +10,7 @@
                             <ul class="list-unstyled">
                                 <li><strong>{{ title }}</strong></li>
                                 {% for subpage, link in subpages.items %}
-                                    <li><a class="text-primary" href="/{{ link }}">{{ subpage }}</a></li>
+                                    <li><u><a class="text-white" href="/{{ link }}">{{ subpage }}</a></u></li>
                                 {% endfor %}
                             </ul>
                         </div>
@@ -27,7 +27,7 @@
                 <h1 class="display-5">JACL</h1>
                 <h5>SALT LAKE CITY CHAPTER</h5>
             </span>
-            <img src="{% static "images/logo/national_logo.svg" %}" style="mix-blend-mode:multiply;" width="100">
+            <img src="{% static "images/logo/JACL_Flower.webp" %}" style="mix-blend-mode:lighten;" width="100">
         </div>
         <div class="mt-2 ml-3 text-right">
             Phone: (123)-456-7890 <br>

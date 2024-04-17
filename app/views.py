@@ -1,15 +1,19 @@
+import datetime
 from django.shortcuts import render
 from .models import *
+import json
 from django.contrib.auth.models import User
 
-# Create your views here.
 pages = {
     'About Us': {
         'Mission & Vision': 'mission',
         'Board Members': 'board',
         'History': 'history',
     },
-    'Events': '',
+    'Events & Statements': {
+        'Events': 'events',
+        'Statements': 'statements',
+    },
     'Get Involved': {
         'Join SLC JACL': 'join',
         'Volunteer': 'volunteer',
@@ -21,6 +25,7 @@ pages = {
 }
 
 context = {'pages': pages}
+
 
 def index(request):
     # SEND IN CONTEXT:
@@ -42,11 +47,20 @@ def index(request):
                                       event['banner_image'].split("/")[-1]
         finalEvents.append(eventObject)
     context['active'] = ''
+    context['images'] = finalImages
+    context['events'] = finalEvents
     return render(request, 'app/index.html', context)
 
+
 def mission(request):
+    missionVision = MissionVisionStatement.objects.all().values()
+    for mission_vision in missionVision:
+        context['mission'] = mission_vision['mission']
+        context['vision'] = mission_vision['vision']
+
     context['active'] = 'mission'
     return render(request, 'app/mission.html', context)
+
 
 def board(request):
     all_positions = ['', 'PRESIDENT', 'TREASURER', 'SECRETARY', 'MEMBERSHIP', 'YOUTH REP',
@@ -77,9 +91,11 @@ def board(request):
     context['board_members'] = return_board_members
     return render(request, 'app/board.html', context)
 
+
 def history(request):
     context['active'] = 'history'
     return render(request, 'app/history.html', context)
+
 
 def events(request):
     context['active'] = 'events'
@@ -106,7 +122,6 @@ def events(request):
             eventDetails['allDay'] = True
 
         arrayOfAllEvents.append(eventDetails)
-
     for event in upcomingEvents:
         eventDetails = {}
         eventDetails['title'] = event['title']
@@ -133,6 +148,8 @@ def events(request):
 
 def join(request):
     context['active'] = 'join'
+    joinustext = JoinUs.objects.get().text
+    context['joinustext'] = joinustext
     return render(request, 'app/join.html', context)
 
 
@@ -165,7 +182,6 @@ def contact(request):
     context['active'] = 'contact'
     return render(request, 'app/contact.html', context)
 
-
 def statements(request):
     allStatements = Statement.objects.all().values()
     statements = []
@@ -178,7 +194,6 @@ def statements(request):
     context['statements'] = statements
     context['active'] = 'statements'
     return render(request, 'app/statements.html', context)
-
 
 def statement(request):
     statement_id = request.GET['statement_id']

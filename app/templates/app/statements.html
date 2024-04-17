@@ -1,0 +1,18 @@
+{% extends "app/master.html" %}
+{% load static %}
+{% block title %}
+    Statements
+{% endblock title %}
+{% block content %}
+    <div class="container">
+        {% for statement in statements %}
+        <div class=" {% if forloop.counter0|divisibleby:2 %} bg-darkblue text-light {% else %} bg-light {% endif %} d-flex flex-row align-items-center justify-content-between w-100 px-5 py-3 my-2">
+            <h2 class="font-family-ysabeau-sc"> {{statement.title}} </h2>
+            <a href="/statement?statement={{statement.slug}}&statement_id={{statement.id}}"><button class="btn btn-transparent {% if forloop.counter0|divisibleby:2 %} text-light {% endif %}"> Read Statement <i class="bi bi-chevron-right"></i></button></a>
+        </div>
+        {% endfor %}
+    </div>
+    <script type="text/javascript">
+
+    </script>
+{% endblock %}
