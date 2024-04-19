@@ -1,7 +1,7 @@
 from csv import reader
 from django.contrib.auth.models import User
 from app.models import *
-from django.contrib.auth.hashers import PBKDF2SHA1PasswordHasher as hasher
+from django.contrib.auth.hashers import PBKDF2PasswordHasher as hasher
 # from app.models import
 
 
