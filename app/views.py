@@ -8,18 +8,15 @@ pages = {
     'About Us': {
         'Mission & Vision': 'mission',
         'Board Members': 'board',
-        'History': 'history',
+        'History': ['EXTERNAL','/pacificcitizen.org/did-you-know-everything-about-ja-history-in-utah/'],
     },
-    'Events & Statements': {
-        'Events': 'events',
-        'Statements': 'statements',
-    },
+    'Events': None,
+    'Statements': None,
     'Get Involved': {
         'Join SLC JACL': 'join',
-        'Volunteer': 'volunteer',
     },
     'Resources': {
-        'JACL Scholarships': '/jacl.org/scholarships',
+        'JACL Scholarships': ['EXTERNAL','/jacl.org/scholarships'],
         'Affiliates': 'affiliates'
     },
 }

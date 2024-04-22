@@ -1,4 +1,5 @@
 {% load static %}
+{% load custom_filters %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light py-3 font-family-ysabeau-sc">
     <a class="navbar-brand d-flex flex-row" href="/">
         <img src="{% static "images/logo/JACL_Flower.webp" %}" style="mix-blend-mode:multiply;" width="100">
@@ -35,7 +36,14 @@
                     {% if subpages|length != 0 %}
                         <div class="dropdown-menu p-2">
                             {% for subpage, link in subpages.items %}
-                                <a class="dropdown-item p-2" href="/{{link}}">{{subpage}}</a>
+                                <a class="dropdown-item p-2" 
+                                    {% if link|length == 2 %}
+                                        href="/{{link.1}}"
+                                        target="_blank"
+                                    {% else %}
+                                        href="/{{link}}"
+                                    {% endif %}
+                                >{{subpage}}</a>
                             {% endfor %}
                         </div>
                     {% endif %}
