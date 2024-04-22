@@ -5,42 +5,50 @@
 {% load static %}
 {% block content %}
 
-<div id="slides" class="carousel slide w-100 m-0 d-flex align-items-center justify-content-center" style="overflow:hidden;" data-ride="carousel">
-    <ol class="carousel-indicators">
-        {% for image in images %}
-            <li data-target="#slides" data-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active"{% endif %}></li>
-        {% endfor %}
-    </ol>
-    <div class="carousel-inner">
-        {% for image in images %}
-        <div class="carousel-item {% if forloop.first %}active{% endif %}">
-          <img class="d-block w-100" style="max-height:50vh;object-fit:cover;" src="{% static image.image %}" alt="{{ image.title }}">
-        </div>
-        {% endfor %}
-    </div>
-    <a class="carousel-control-prev" href="#slides" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#slides" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
-</div>
-
-<div class="p-3">
-    <h3 class="font-family-ysabeau-sc my-2">EVENTS</h3>
-    <div class="col-md-12 d-flex flex-row align-items-center justify-content-center">
-        {% comment %} <div class="col-sm-2 text-center display-4"><i class="bi bi-chevron-left"></i></div> {% endcomment %}
-        <div class="col-sm-12 py-3 d-flex flex-row overflow-auto">
-            {% for event in events %}
-                <a href="/events" class="mx-2 p-5 bg-secondary col-md-3 d-flex align-items-center justify-content-center text-decoration-none" style="height:150px; background-image: url('{% static event.banner_image %}'); background-size: cover; background-position: center;">
-                    <h3 class="text-center" style="text-shadow: 2px 2px 4px #000000; color: azure">{{ event.title }}</h3>
-                </a>
+    <div id="slides" class="carousel slide w-100 m-0 d-flex align-items-center justify-content-center"
+         style="overflow:hidden;" data-ride="carousel">
+        <ol class="carousel-indicators">
+            {% for image in images %}
+                <li data-target="#slides" data-slide-to="{{ forloop.counter0 }}"
+                    {% if forloop.first %}class="active"{% endif %}></li>
+            {% endfor %}
+        </ol>
+        <div class="carousel-inner">
+            {% for image in images %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                    <img class="d-block w-100" style="max-height:50vh;object-fit:cover;" src="{% static image.image %}"
+                         alt="{{ image.title }}">
+                </div>
             {% endfor %}
         </div>
-        {% comment %} <div class="col-sm-2 text-center display-4"><i class="bi bi-chevron-right"></i></div> {% endcomment %}
+        <a class="carousel-control-prev" href="#slides" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#slides" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
-</div>
+
+    <div class="p-3">
+        <h3 class="font-family-ysabeau-sc my-2">EVENTS</h3>
+        <div class="col-md-12 d-flex flex-row align-items-center justify-content-center">
+            {% comment %} <div class="col-sm-2 text-center display-4"><i class="bi bi-chevron-left"></i></div> {% endcomment %}
+            <div class="col-sm-12 py-3 d-flex flex-row overflow-auto">
+                {% for event in events %}
+                    <a href="/events"
+                       class="mx-2 p-5 bg-secondary col-md-3 d-flex align-items-center justify-content-center text-decoration-none"
+                       style="height:150px; background-image: url('{% static event.banner_image %}'); background-size: cover; background-position: center;">
+
+                        <h3 class="text-center"
+                            style="text-shadow: 4px 4px 6px #000000; color: azure">{{ event.title }}</h3>
+
+                    </a>
+                {% endfor %}
+            </div>
+            {% comment %} <div class="col-sm-2 text-center display-4"><i class="bi bi-chevron-right"></i></div> {% endcomment %}
+        </div>
+    </div>
 
 {% endblock content %}
