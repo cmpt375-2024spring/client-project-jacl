@@ -65,6 +65,9 @@ class JoinUs(models.Model):
     mid_circle = models.TextField()
     bottom_circle = models.TextField()
 
+    class Meta:
+        verbose_name_plural = 'Join Us'
+
     def __str__(self):
         return "Join Us Text Field"
 
@@ -72,6 +75,9 @@ class JoinUs(models.Model):
 class MissionVisionStatement(models.Model):
     mission = models.TextField()
     vision = models.TextField()
+
+    class Meta:
+        verbose_name_plural = 'Mission and Vision Statements'
 
     def __str__(self):
         return "Mission and Vision Statement"
