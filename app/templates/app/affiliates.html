@@ -3,28 +3,91 @@
     Affiliates
 {% endblock title %}
 {% block content %}
-    <h1 class="font-family-ysabeau-sc"
-        style=" position: relative; margin-top: 3vw; margin-bottom: 3vw; text-align: center; font-size: 6vh;">
-        JACL Affiliate Organizations</h1>
-    <div class="container-fluid">
-        {% for affiliate in affiliates %}
-            <div class="row justify-content-center">
-                <div class="col-12 col-md-10 col-lg-8">
-                    <div class="d-flex flex-column align-items-center py-3 {% if forloop.counter0|divisibleby:2 %} bg-darkblue text-light {% else %} bg-light {% endif %}"
-                         style="margin-bottom: 3vh;">
-                        <h2 class="font-family-ysabeau-sc">{{ affiliate.name }}</h2>
-                        <!-- Flex container for centered text -->
-                        <div style="width: 100%; display: flex; justify-content: center;">
-                            <p class="font-family-eb-garamond"
-                               style="font-size: 3vh; margin: 2vh 7vw;">{{ affiliate.description }}</p>
-                        </div>
-                        <a href="{{ affiliate.website }}"
-                           class="font-family-eb-garamond {% if forloop.counter0|divisibleby:2 %} text-light {% else %} text-black {% endif %}"
-                           style="font-size: 3vh; text-decoration: underline">Learn
-                            more about {{ affiliate.name }} here</a>
+    <div class="container">
+        {% if japaneseAffiliates %}
+        <h2 class="font-family-ysabeau-sc text-center display-4"> Japanese Cultural Organizations </h2>
+        {% for japaneseAffiliate in japaneseAffiliates %}
+            <div class="col-sm-12">
+                <div class="d-flex flex-column align-items-center py-3 {% if forloop.counter0|divisibleby:2 %} bg-darkblue text-light {% else %} bg-light {% endif %}"
+                        style="margin-bottom: 3vh;">
+                    <h2 class="font-family-ysabeau-sc">{{ japaneseAffiliate.name }}</h2>
+                    <div style="width: 100%; display: flex; justify-content: center;">
+                        <p class="font-family-eb-garamond"
+                            style="font-size: 3vh; margin: 2vh 7vw;">{{ japaneseAffiliate.description }}</p>
                     </div>
+                    <u><a target="_blank" href="{{ japaneseAffiliate.website }}" class="font-family-eb-garamond {% if forloop.counter0|divisibleby:2 %} text-light {% else %} text-black {% endif %}">Learn more about {{ japaneseAffiliate.name }} here</a></u>
                 </div>
             </div>
         {% endfor %}
+        {% endif %}
+
+        {% if religiousAffiliates %}
+        <h2 class="font-family-ysabeau-sc text-center display-4"> Religious Organizations </h2>
+        {% for religiousAffiliate in religiousAffiliates %}
+            <div class="col-sm-12">
+                <div class="d-flex flex-column align-items-center py-3 {% if forloop.counter0|divisibleby:2 %} bg-darkblue text-light {% else %} bg-light {% endif %}"
+                        style="margin-bottom: 3vh;">
+                    <h2 class="font-family-ysabeau-sc">{{ religiousAffiliate.name }}</h2>
+                    <div style="width: 100%; display: flex; justify-content: center;">
+                        <p class="font-family-eb-garamond"
+                            style="font-size: 3vh; margin: 2vh 7vw;">{{ religiousAffiliate.description }}</p>
+                    </div>
+                    <u><a target="_blank" href="{{ religiousAffiliate.website }}" class="font-family-eb-garamond {% if forloop.counter0|divisibleby:2 %} text-light {% else %} text-black {% endif %}">Learn more about {{ religiousAffiliate.name }} here</a></u>
+                </div>
+            </div>
+        {% endfor %}
+        {% endif %}
+
+        {% if aanphiAffiliates %}
+        <h2 class="font-family-ysabeau-sc text-center display-4"> AANHPI Organizations </h2>
+        {% for aanphiAffiliate in aanphiAffiliates %}
+            <div class="col-sm-12">
+                <div class="d-flex flex-column align-items-center py-3 {% if forloop.counter0|divisibleby:2 %} bg-darkblue text-light {% else %} bg-light {% endif %}"
+                        style="margin-bottom: 3vh;">
+                    <h2 class="font-family-ysabeau-sc">{{ aanphiAffiliate.name }}</h2>
+                    <div style="width: 100%; display: flex; justify-content: center;">
+                        <p class="font-family-eb-garamond"
+                            style="font-size: 3vh; margin: 2vh 7vw;">{{ aanphiAffiliate.description }}</p>
+                    </div>
+                    <u><a target="_blank" href="{{ aanphiAffiliate.website }}" class="font-family-eb-garamond {% if forloop.counter0|divisibleby:2 %} text-light {% else %} text-black {% endif %}">Learn more about {{ aanphiAffiliate.name }} here</a></u>
+                </div>
+            </div>
+        {% endfor %}
+        {% endif %}
+
+        {% if lgbtqiaAffiliates %}
+        <h2 class="font-family-ysabeau-sc text-center display-4"> LGBTQIA+ Organizations </h2>
+        {% for lgbtqiaAffiliate in lgbtqiaAffiliates %}
+            <div class="col-sm-12">
+                <div class="d-flex flex-column align-items-center py-3 {% if forloop.counter0|divisibleby:2 %} bg-darkblue text-light {% else %} bg-light {% endif %}"
+                        style="margin-bottom: 3vh;">
+                    <h2 class="font-family-ysabeau-sc">{{ lgbtqiaAffiliate.name }}</h2>
+                    <div style="width: 100%; display: flex; justify-content: center;">
+                        <p class="font-family-eb-garamond"
+                            style="font-size: 3vh; margin: 2vh 7vw;">{{ lgbtqiaAffiliate.description }}</p>
+                    </div>
+                    <u><a target="_blank" href="{{ lgbtqiaAffiliate.website }}" class="font-family-eb-garamond {% if forloop.counter0|divisibleby:2 %} text-light {% else %} text-black {% endif %}">Learn more about {{ lgbtqiaAffiliate.name }} here</a></u>
+                </div>
+            </div>
+        {% endfor %}
+        {% endif %}
+
+        {% if otherAffiliates %}
+        <h2 class="font-family-ysabeau-sc text-center display-4"> Other Affiliates </h2>
+        {% for otherAffiliate in otherAffiliates %}
+            <div class="col-sm-12">
+                <div class="d-flex flex-column align-items-center py-3 {% if forloop.counter0|divisibleby:2 %} bg-darkblue text-light {% else %} bg-light {% endif %}"
+                        style="margin-bottom: 3vh;">
+                    <h2 class="font-family-ysabeau-sc">{{ otherAffiliate.name }}</h2>
+                    <div style="width: 100%; display: flex; justify-content: center;">
+                        <p class="font-family-eb-garamond"
+                            style="font-size: 3vh; margin: 2vh 7vw;">{{ otherAffiliate.description }}</p>
+                    </div>
+                    <u><a target="_blank" href="{{ otherAffiliate.website }}" class="font-family-eb-garamond {% if forloop.counter0|divisibleby:2 %} text-light {% else %} text-black {% endif %}">Learn more about {{ otherAffiliate.name }} here</a></u>
+                </div>
+            </div>
+        {% endfor %}
+        {% endif %}
+        
     </div>
 {% endblock content %}
