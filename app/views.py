@@ -8,7 +8,7 @@ pages = {
     'About Us': {
         'Mission & Vision': 'mission',
         'Board Members': 'board',
-        'History': ['EXTERNAL','/pacificcitizen.org/did-you-know-everything-about-ja-history-in-utah/'],
+        'History': ['EXTERNAL', '/pacificcitizen.org/did-you-know-everything-about-ja-history-in-utah/'],
     },
     'Events': None,
     'Statements': None,
@@ -16,7 +16,7 @@ pages = {
         'Join SLC JACL': 'join',
     },
     'Resources': {
-        'JACL Scholarships': ['EXTERNAL','/jacl.org/scholarships'],
+        'JACL Scholarships': ['EXTERNAL', '/jacl.org/scholarships'],
         'Affiliates': 'affiliates'
     },
 }
@@ -161,16 +161,36 @@ def scholarships(request):
 
 
 def affiliates(request):
-    allAffiliates = Affiliate.objects.all().values()
-    finalAffiliates = []
-    for affiliate in allAffiliates:
-        affObj = {}
-        affObj['name'] = affiliate['name']
-        affObj['description'] = affiliate['description']
-        affObj['website'] = affiliate['website']
-        finalAffiliates.append(affObj)
+    finalAffiliatesJCO = []
+    finalAffiliatesReligious = []
+    finalAffiliatesAANHPI = []
+    finalAffiliatesLGBT = []
+    finalAffiliatesOther = []
 
-    context['affiliates'] = finalAffiliates
+    affiliates = Affiliate.objects.all().values()
+
+    for affiliate in affiliates:
+        affObj = {}
+        affObj['affiliate_group'] = affiliate['affiliate_group']
+        affObj['name'] = affiliate['name']
+        affObj['website'] = affiliate['website']
+
+        if affObj['affiliate_group'] == '1':
+            finalAffiliatesJCO.append(affObj)
+        elif affObj['affiliate_group'] == '2':
+            finalAffiliatesReligious.append(affObj)
+        elif affObj['affiliate_group'] == '3':
+            finalAffiliatesAANHPI.append(affObj)
+        elif affObj['affiliate_group'] == '4':
+            finalAffiliatesLGBT.append(affObj)
+        else:
+            finalAffiliatesOther.append(affObj)
+
+    context['affiliates_JCO'] = finalAffiliatesJCO
+    context['affiliates_Religious'] = finalAffiliatesReligious
+    context['affiliates_AANHPI'] = finalAffiliatesAANHPI
+    context['affiliates_LGBT'] = finalAffiliatesLGBT
+    context['affiliates_Other'] = finalAffiliatesOther
     context['active'] = 'affiliates'
     return render(request, 'app/affiliates.html', context)
 
@@ -178,6 +198,7 @@ def affiliates(request):
 def contact(request):
     context['active'] = 'contact'
     return render(request, 'app/contact.html', context)
+
 
 def statements(request):
     allStatements = Statement.objects.all().values()
@@ -191,6 +212,7 @@ def statements(request):
     context['statements'] = statements
     context['active'] = 'statements'
     return render(request, 'app/statements.html', context)
+
 
 def statement(request):
     statement_id = request.GET['statement_id']

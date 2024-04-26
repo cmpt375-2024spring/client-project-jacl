@@ -7,24 +7,70 @@
         style=" position: relative; margin-top: 3vw; margin-bottom: 3vw; text-align: center; font-size: 6vh;">
         JACL Affiliate Organizations</h1>
     <div class="container-fluid">
-        {% for affiliate in affiliates %}
-            <div class="row justify-content-center">
-                <div class="col-12 col-md-10 col-lg-8">
-                    <div class="d-flex flex-column align-items-center py-3 {% if forloop.counter0|divisibleby:2 %} bg-darkblue text-light {% else %} bg-light {% endif %}"
-                         style="margin-bottom: 3vh;">
-                        <h2 class="font-family-ysabeau-sc">{{ affiliate.name }}</h2>
-                        <!-- Flex container for centered text -->
-                        <div style="width: 100%; display: flex; justify-content: center;">
-                            <p class="font-family-eb-garamond"
-                               style="font-size: 3vh; margin: 2vh 7vw;">{{ affiliate.description }}</p>
-                        </div>
-                        <a href="{{ affiliate.website }}"
-                           class="font-family-eb-garamond {% if forloop.counter0|divisibleby:2 %} text-light {% else %} text-black {% endif %}"
-                           style="font-size: 3vh; text-decoration: underline">Learn
-                            more about {{ affiliate.name }} here</a>
-                    </div>
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-8">
+                <div class="d-flex flex-column py-3 bg-darkblue text-light align-items-center"
+                     style="margin-bottom: 3vh;">
+                    <h2 class="font-family-eb-garamond text-light"
+                        style="font-size: 4vh; margin-bottom: 2vh;">
+                        Japanese Cultural
+                        Organizations
+                    </h2>
+                    <ul>
+                        {% for affiliate in affiliates_JCO %}
+                            <li style="margin-bottom: 1vh; font-size: 3vh">
+                                <a class="text-light" href="{{ affiliate.website }}"
+                                   target="_blank">{{ affiliate.name }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
                 </div>
+                <div class="d-flex flex-column py-3 bg-light text-black align-items-center"
+                     style="margin-bottom: 3vh;">
+                    <h2 class="font-family-eb-garamond text-black" style="font-size: 4vh; margin-bottom: 2vh;">
+                        Religious Organizations
+                    </h2>
+                    <ul>
+                        {% for affiliate in affiliates_Religious %}
+                            <li style="margin-bottom: 1vh; font-size: 3vh">
+                                <a class="text-black" href="{{ affiliate.website }}"
+                                   target="_blank">{{ affiliate.name }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="d-flex flex-column py-3 bg-darkblue text-light align-items-center"
+                     style="margin-bottom: 3vh;">
+                    <h2 class="font-family-eb-garamond text-light"
+                        style="font-size: 4vh; margin-bottom: 2vh;">
+                        AANHPI
+                        Organizations
+                    </h2>
+                    <ul>
+                        {% for affiliate in affiliates_AANHPI %}
+                            <li style="margin-bottom: 1vh; font-size: 3vh">
+                                <a class="text-light" href="{{ affiliate.website }}"
+                                   target="_blank">{{ affiliate.name }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="d-flex flex-column py-3 bg-light text-black align-items-center"
+                     style="margin-bottom: 3vh;">
+                    <h2 class="font-family-eb-garamond text-black" style="font-size: 4vh; margin-bottom: 2vh;">
+                        LQBTQIA+ Organizations
+                    </h2>
+                    <ul>
+                        {% for affiliate in affiliates_LGBT %}
+                            <li style="margin-bottom: 1vh; font-size: 3vh;">
+                                <a class="text-black" href="{{ affiliate.website }}"
+                                   target="_blank">{{ affiliate.name }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            
             </div>
-        {% endfor %}
+        </div>
     </div>
 {% endblock content %}
