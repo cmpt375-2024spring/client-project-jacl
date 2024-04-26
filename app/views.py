@@ -161,16 +161,56 @@ def scholarships(request):
 
 
 def affiliates(request):
-    allAffiliates = Affiliate.objects.all().values()
-    finalAffiliates = []
-    for affiliate in allAffiliates:
-        affObj = {}
-        affObj['name'] = affiliate['name']
-        affObj['description'] = affiliate['description']
-        affObj['website'] = affiliate['website']
-        finalAffiliates.append(affObj)
+    japaneseAffiliates = Affiliate.objects.all().filter(group='Japanese Cultural Organizations').values()
+    returnJapaneseAffiliates = []
+    for japaneseAffiliate in japaneseAffiliates:
+        japaneseAffiliatesObj = {}
+        japaneseAffiliatesObj['name'] = japaneseAffiliate['name']
+        japaneseAffiliatesObj['description'] = japaneseAffiliate['description']
+        japaneseAffiliatesObj['website'] = japaneseAffiliate['website']
+        returnJapaneseAffiliates.append(japaneseAffiliatesObj)
 
-    context['affiliates'] = finalAffiliates
+    religiousAffiliates = Affiliate.objects.all().filter(group='Religious Organizations').values()
+    returnreligiousAffiliates = []
+    for religiousAffiliate in religiousAffiliates:
+        religiousAffiliatesObj = {}
+        religiousAffiliatesObj['name'] = religiousAffiliate['name']
+        religiousAffiliatesObj['description'] = religiousAffiliate['description']
+        religiousAffiliatesObj['website'] = religiousAffiliate['website']
+        returnreligiousAffiliates.append(religiousAffiliatesObj)
+
+    aanphiAffiliates = Affiliate.objects.all().filter(group='AANHPI Organizations').values()
+    returnaanphiAffiliates = []
+    for aanphiAffiliate in aanphiAffiliates:
+        aanphiAffiliatesObj = {}
+        aanphiAffiliatesObj['name'] = aanphiAffiliate['name']
+        aanphiAffiliatesObj['description'] = aanphiAffiliate['description']
+        aanphiAffiliatesObj['website'] = aanphiAffiliate['website']
+        returnaanphiAffiliates.append(aanphiAffiliatesObj)
+    
+    lgbtqiaAffiliates = Affiliate.objects.all().filter(group='LGBTQIA+ Organizations').values()
+    returnlgbtqiaAffiliates = []
+    for lgbtqiaAffiliate in lgbtqiaAffiliates:
+        lgbtqiaAffiliatesObj = {}
+        lgbtqiaAffiliatesObj['name'] = lgbtqiaAffiliate['name']
+        lgbtqiaAffiliatesObj['description'] = lgbtqiaAffiliate['description']
+        lgbtqiaAffiliatesObj['website'] = lgbtqiaAffiliate['website']
+        returnlgbtqiaAffiliates.append(lgbtqiaAffiliatesObj)
+    
+    otherAffiliates = Affiliate.objects.all().filter(group='Other Affiliates').values()
+    returnotherAffiliates = []
+    for otherAffiliate in otherAffiliates:
+        otherAffiliatesObj = {}
+        otherAffiliatesObj['name'] = otherAffiliate['name']
+        otherAffiliatesObj['description'] = otherAffiliate['description']
+        otherAffiliatesObj['website'] = otherAffiliate['website']
+        returnotherAffiliates.append(otherAffiliatesObj)
+
+    context['japaneseAffiliates'] = returnJapaneseAffiliates
+    context['religiousAffiliates'] = returnreligiousAffiliates
+    context['aanphiAffiliates'] = returnaanphiAffiliates
+    context['lgbtqiaAffiliates'] = returnlgbtqiaAffiliates
+    context['otherAffiliates'] = returnotherAffiliates
     context['active'] = 'affiliates'
     return render(request, 'app/affiliates.html', context)
 

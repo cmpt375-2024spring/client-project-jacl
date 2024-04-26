@@ -93,9 +93,17 @@ class Statement(models.Model):
 
 
 class Affiliate(models.Model):
+    groups = (
+        ('Japanese Cultural Organizations','Japanese Cultural Organizations'),
+        ('Religious Organizations','Religious Organizations'),
+        ('AANHPI Organizations','AANHPI Organizations'),
+        ('LGBTQIA+ Organizations','LGBTQIA+ Organizations'),
+        ('Other Affiliates','Other Affiliates')
+    )
     name = models.CharField(max_length=100)
     description = models.TextField()
     website = models.CharField(max_length=400)
+    group = models.TextField(choices=groups, default='Other Affiliates')
 
     def __str__(self):
         return self.name
