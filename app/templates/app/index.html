@@ -14,7 +14,7 @@
     <div class="carousel-inner">
         {% for image in images %}
         <div class="carousel-item {% if forloop.first %}active{% endif %}">
-          <img class="d-block w-100" style="max-height:50vh;object-fit:cover;" src="{% static image.image %}" alt="{{ image.title }}">
+          <img class="d-block w-100" style="height:45vh;object-fit:cover;" src="{% static image.image %}" alt="{{ image.title }}">
         </div>
         {% endfor %}
     </div>
@@ -29,17 +29,15 @@
 </div>
 
 <div class="p-3">
-    <h3 class="font-family-ysabeau-sc my-2">EVENTS</h3>
+    <h3 class="font-family-ysabeau-sc my-2" style="font-size:3rem">EVENTS</h3>
     <div class="col-md-12 d-flex flex-row align-items-center justify-content-center">
-        {% comment %} <div class="col-sm-2 text-center display-4"><i class="bi bi-chevron-left"></i></div> {% endcomment %}
         <div class="col-sm-12 py-3 d-flex flex-row overflow-auto">
             {% for event in events %}
-                <a href="/events" class="mx-2 p-5 bg-secondary col-md-3 d-flex align-items-center justify-content-center text-decoration-none" style="height:150px; background-image: url('{% static event.banner_image %}'); background-size: cover; background-position: center;">
+                <a href="/events" class="mx-2 p-5 d-flex align-items-center justify-content-center text-decoration-none" style="width:20vw; background-image: url('{% static event.banner_image %}'); background-size:cover;background-position:center;">
                     <h3 class="text-center" style="text-shadow: 2px 2px 4px #000000; color: azure">{{ event.title }}</h3>
                 </a>
             {% endfor %}
         </div>
-        {% comment %} <div class="col-sm-2 text-center display-4"><i class="bi bi-chevron-right"></i></div> {% endcomment %}
     </div>
 </div>
 
