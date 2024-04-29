@@ -3,5 +3,29 @@
     Contact Us
 {% endblock title %}
 {% block content %}
-    
+    <h2 class="text-center font-family-ysabeau-sc display-3 mt-2">Contact Us</h2>
+    <div class="container-fluid mt-3 d-flex flex-row">
+        <div class="col-md-6">
+            <span class="text-secondary">{% if messages %}
+                {% for message in messages %}
+                    {{message}}
+                {% endfor %}
+            {% endif %}</span>
+            <form method="POST" action="">
+                {% csrf_token %}
+                {{form}}
+                <button type="reset" class="btn btn-secondary text-light mt-3">Clear</button>
+                <button type="submit" class="btn bg-darkblue text-light mt-3">Submit</button>
+            </form>
+        </div>
+        <div class="col-md-6 pt-3 text-right d-flex flex-column justify-content-center bg-darkblue text-light rounded">
+            <h4 style="font-size: 300%;">We'd love to hear from you!</h4>
+            <p style="font-size: 150%;">
+                Japanese American Citizens League <br>
+                Salt Lake Chapter <br>
+                Address: Salt Lake City, Utah <br>
+                Email: contact@jaclslc.org
+            </p>
+        </div>
+    </div>
 {% endblock content %}

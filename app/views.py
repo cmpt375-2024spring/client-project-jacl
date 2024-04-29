@@ -1,5 +1,8 @@
 import datetime
-from django.shortcuts import render
+from django.contrib import messages
+from django.shortcuts import redirect, render
+
+from app.forms import ContactModelForm
 from .models import *
 import json
 from django.contrib.auth.models import User
@@ -14,6 +17,7 @@ pages = {
     'Statements': None,
     'Get Involved': {
         'Join SLC JACL': 'join',
+        'Contact Us': 'contact',
     },
     'Resources': {
         'JACL Scholarships': ['EXTERNAL','/jacl.org/scholarships'],
@@ -216,7 +220,24 @@ def affiliates(request):
 
 
 def contact(request):
+    if(request.method == "POST"):
+        inputs = ContactModelForm(request.POST)
+        if inputs.is_valid():
+            saving_values = Contact.objects.create(
+                name = inputs.cleaned_data['name'],
+                email = inputs.cleaned_data['email'],
+                phone = inputs.cleaned_data['phone'],
+                message = inputs.cleaned_data['message']
+            )
+            saving_values.save()
+            messages.success(request, 'Successfully Sent Message')
+        else:
+            messages.error(request, 'Failed to Send Message')
+        return redirect('contact')
+
+
     context['active'] = 'contact'
+    context['form'] = ContactModelForm()
     return render(request, 'app/contact.html', context)
 
 def statements(request):
