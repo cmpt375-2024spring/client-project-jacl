@@ -10,7 +10,14 @@
                             <ul class="list-unstyled">
                                 <li><strong>{{ title }}</strong></li>
                                 {% for subpage, link in subpages.items %}
-                                    <li><u><a class="text-white" href="/{{ link }}">{{ subpage }}</a></u></li>
+                                    <li><u><a class="text-white" 
+                                        {% if link|length == 2 %}
+                                        href="/{{link.1}}"
+                                        target="_blank"
+                                    {% else %}
+                                        href="/{{link}}"
+                                    {% endif %}
+                                        >{{ subpage }}</a></u></li>
                                 {% endfor %}
                             </ul>
                         </div>
