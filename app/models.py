@@ -27,6 +27,10 @@ class HomePageImage(models.Model):
     title = models.CharField(max_length=50)
     image = models.ImageField(upload_to='app/static/user_upload/homePage')
 
+    class Meta:
+        verbose_name = 'Home Page Image'
+        verbose_name_plural = 'Home Page Images'
+
     def __str__(self):
         return self.title
 
@@ -107,6 +111,16 @@ class Affiliate(models.Model):
     description = models.TextField()
     website = models.CharField(max_length=400)
     group = models.TextField(choices=groups, default='Other Affiliates')
+
+    def __str__(self):
+        return self.name
+
+
+class Contact(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    phone = models.IntegerField(null=True, blank=True, default=0)
+    message = models.TextField()
 
     def __str__(self):
         return self.name
